@@ -10,6 +10,9 @@ body {
   font-family: 'Poppins', sans-serif;
   height: 100vh;
 }
+.indisplayed{
+  display: none;
+}
 
 a {
   text-decoration: none;
@@ -108,15 +111,100 @@ h3 {
   background: none;
 }
 
-.form,
-.content {
+
+.matieres {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+  border-radius: 10px;
+  height: 90vh;
+}
+.matiere {
+  margin: 5px;
+  padding:10px;
+  position: relative;
+  color:white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  
+
+}
+
+.matiere .close {
+  position: absolute;
+  top: 1px;
+  right: 1.5px;
+  cursor: pointer;
+  border: none;
+  background: whitesmoke;
+  color:black;
+  font-weight: bolder;
+}
+.matiere-day{
+  margin: 5px;
+  padding:10px;
+  position: relative;
+  color:white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.matiere-day .edit {
+  position: absolute;
+  top: 1px;
+  right: 1.5px;
+  cursor: pointer;
+  border: none;
+  background: whitesmoke;
+  color:black;
+  font-weight: bolder;
+}
+
+.form {
   width: 70%;
   margin: 0 auto;
+  border:2px solid white;
+  border-radius: 10px;
+  margin-top: 20px;
+
+
+}
+.content {
+  margin: 0 auto;
+  border:2px solid white;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  gap: 5px;
+
+}
+.week{
+  display:grid;
+  grid-template-columns: repeat(6,1fr);
+  column-gap: 1px;
+  border: 2px solid rgb(157, 73, 73);
+  border-radius: 10px;
+}
+.day{
+  display: flex;
+  flex-direction: column;
+  background-color: whitesmoke;
+  height:90vh;
+}
+.day .title{
+  background-color: #2ae2e5;
+  margin:3px 1px 10px;
 }
 
 .form-group {
   margin-bottom: 10px;
 }
+
 
 .form-group input,
 .form-group textarea,

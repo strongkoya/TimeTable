@@ -1,4 +1,4 @@
 NODE_ENV = development
 PORT = 5000
-MONGO_URI = mongodb+srv://YOURMONGOURI
+MONGO_URI = mongodb+srv://khaled123:khaled123@khaledcluster.cjhcjge.mongodb.net/first_app?retryWrites=true&w=majority
 JWT_SECRET = abc123
