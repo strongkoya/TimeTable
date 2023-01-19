@@ -1,25 +1,46 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { createMatiere } from '../features/matieres/matiereSlice'
+import { useState ,useEffect} from 'react'
+import { useDispatch ,useSelector} from 'react-redux'
+import { useParams,useNavigate} from 'react-router-dom'
+import { getMatieres,deleteMatiere, reset } from '../features/matieres/matiereSlice'
 
-function MatiereForm() {
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [duration, setDuration] = useState(1)
-  const [color, setColor] = useState("#6e3172")
-  const [code,setCode]=useState('')
 
-  const dispatch = useDispatch()
+function UpdateMatiere() {
+    const params = useParams();
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const { user } = useSelector((state) => state.auth)
+    const { matieres, isLoading, isError, message } = useSelector(
+    (state) => state.matieres
+  )
+ 
+
+  useEffect(() => {
+
+    if (isError) {
+      console.log(message)
+    }
+
+    if (!user) {
+      navigate('/login')
+    }
+
+    dispatch(getMatieres())
+  
+
+    return () => {
+      dispatch(reset())
+    }
+   
+    
+    
+  }, [user, navigate, isError, message, dispatch])
 
   const onSubmit = (e) => {
     e.preventDefault()
-
-    dispatch(createMatiere({ title:title,description:description,duration:duration,color:color,code:code,day:"null",time:"null"}))
-    setTitle('')
-    setDescription('')
-    setDuration(1)
-    setColor("#6e3172")
-    setCode('')
+    //dispatch(deleteMatiere(myMatiere._id))
+    //dispatch(createMatiere({ title:title,description:description,duration:duration,color:color,code:code,day:"null",time:"null"}))
+    //Navigation
   }
   const handleDuration =(e)=>{
     let val = parseInt(e.target.value)
@@ -29,8 +50,19 @@ function MatiereForm() {
     setDuration(1)
   }
 
-  return (
-    <section className='form'>
+
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [duration, setDuration] = useState('')
+  const [color, setColor] = useState('')
+  const [code,setCode]=useState('')
+
+  
+
+
+  return (  
+    <section className='form'> 
+      
       <form onSubmit={onSubmit}>
         
         <div className='form-group'>
@@ -96,12 +128,13 @@ function MatiereForm() {
         
         <div className='form-group'>
           <button className='btn btn-block' type='submit'>
-            Add Matiere
+            Update Matiere
           </button>
         </div>
       </form>
     </section>
   )
+ 
 }
 
-export default MatiereForm
+export default UpdateMatiere

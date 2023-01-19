@@ -61,7 +61,32 @@ export const deleteMatiere = createAsyncThunk(
           error.response.data.message) ||
         error.message ||
         error.toString()
+        console.log(error)
       return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
+// Update user matiere
+export const updateMatiere = createAsyncThunk(
+  'matieres/update',
+  async (id,thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token
+
+      return await matiereService.updateMatiere(id, token)
+      
+    } catch (error) {
+      
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+        console.log(message)
+      return thunkAPI.rejectWithValue(message)
+      
     }
   }
 )
@@ -100,6 +125,7 @@ export const matiereSlice = createSlice({
         state.isError = true
         state.message = action.payload
       })
+
       .addCase(deleteMatiere.pending, (state) => {
         state.isLoading = true
       })
@@ -111,6 +137,23 @@ export const matiereSlice = createSlice({
         )
       })
       .addCase(deleteMatiere.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+
+
+      .addCase(updateMatiere.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(updateMatiere.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.matieres = state.matieres.filter(
+          (matiere) => matiere._id !== action.payload.id
+        )
+      })
+      .addCase(updateMatiere.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

@@ -1,33 +1,35 @@
-import { useDispatch } from 'react-redux'
 import { useDrag } from 'react-dnd'
-import { deleteMatiere } from '../features/matieres/matiereSlice'
-
-
+import { useNavigate } from 'react-router-dom'
 
 
 function MatiereItem({ matiere }) {
-  const dispatch = useDispatch()
+  const navigate =useNavigate()
   const [{isDragging},drag]=useDrag(()=>({
     type:"text/plain",
-    item:{matiere},
+    item:matiere,
     collect: (monitor)=>({
       isDragging:!!monitor.isDragging(),
-    }),
+     
+          }),
   }))
+
   return (
     <div  
       ref={drag}
       className='matiere-day'
       style={{backgroundColor: matiere.color,
-              height:matiere.duration * 100
+              height: matiere.duration*(75)-5,
+              display: isDragging ? "none":"flex"
+            
     }}
     
     >
       <h5>{matiere.duration}</h5>
       <h4>{matiere.title}</h4>
     
-      <button onClick={() => dispatch(deleteMatiere(matiere._id))} className='edit'>
-        x
+      <button onClick={() => navigate('/update/'+matiere._id)
+        } className='edit'>
+        edit
       </button>
     </div>
   )

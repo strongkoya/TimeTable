@@ -27,15 +27,15 @@ const setMatiere = asyncHandler(async (req, res) => {
     color: req.body.color,
     code: req.body.code,
     user: req.user.id,
-    day: null,
-    time:null
+    day: req.body.day ,
+    time: req.body.time
   })
 
   res.status(200).json(matiere)
 })
 
-// @desc    Update goal
-// @route   PUT /api/goals/:id
+// @desc    Update matieres
+// @route   PUT /api/matieres/:id
 // @access  Private
 const updateMatiere = asyncHandler(async (req, res) => {
   const matiere = await Matiere.findById(req.params.id)
@@ -51,7 +51,7 @@ const updateMatiere = asyncHandler(async (req, res) => {
     throw new Error('User not found')
   }
 
-  // Make sure the logged in user matches the goal user
+  // Make sure the logged in user matches the matiere user
   if (matiere.user.toString() !== req.user.id) {
     res.status(401)
     throw new Error('User not authorized')
@@ -64,8 +64,8 @@ const updateMatiere = asyncHandler(async (req, res) => {
   res.status(200).json(updatedMatiere)
 })
 
-// @desc    Delete goal
-// @route   DELETE /api/goals/:id
+// @desc    Delete matieres
+// @route   DELETE /api/matieres/:id
 // @access  Private
 const deleteMatiere = asyncHandler(async (req, res) => {
   const matiere = await Matiere.findById(req.params.id)
@@ -81,7 +81,7 @@ const deleteMatiere = asyncHandler(async (req, res) => {
     throw new Error('User not found')
   }
 
-  // Make sure the logged in user matches the goal user
+  // Make sure the logged in user matches the matiere user
   if (matiere.user.toString() !== req.user.id) {
     res.status(401)
     throw new Error('User not authorized')

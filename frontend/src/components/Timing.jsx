@@ -1,4 +1,3 @@
-import {useState,useContext} from 'react'
 import DayItem from './DayItem'
 
 function Timing() {

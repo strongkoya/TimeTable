@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const API_URL = '/api/matieres/'
 
+
 // Create new matiere
 const createMatiere = async (matiereData, token) => {
   const config = {
@@ -28,7 +29,8 @@ const getMatieres = async (token) => {
   return response.data
 }
 
-// Delete user goal
+
+// Delete user matiere
 const deleteMatiere = async (matiereId, token) => {
   const config = {
     headers: {
@@ -41,10 +43,24 @@ const deleteMatiere = async (matiereId, token) => {
   return response.data
 }
 
+// update  user Matiere
+const updateMatiere = async (matiereId,newValue, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`
+    },
+  }
+
+  const response = await axios.put(API_URL + matiereId, newValue ,config)
+
+  return response.data
+}
+
 const matiereService = {
     createMatiere,
     getMatieres,
     deleteMatiere,
+    updateMatiere
 }
 
 export default matiereService

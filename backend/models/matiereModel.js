@@ -29,11 +29,11 @@ const matiereSchema = mongoose.Schema(
       },
       day:{
         type:String,
-        required:false
+        required:true
       },
       time:{
         type:String,
-        required:false
+        required:true
       }
   },
   {
