@@ -1,5 +1,6 @@
 import { useDrag } from 'react-dnd'
 import { useNavigate } from 'react-router-dom'
+import Edit from '../edit.png'
 
 
 function MatiereItem({ matiere }) {
@@ -9,6 +10,7 @@ function MatiereItem({ matiere }) {
     item:matiere,
     collect: (monitor)=>({
       isDragging:!!monitor.isDragging(),
+      
      
           }),
   }))
@@ -18,7 +20,7 @@ function MatiereItem({ matiere }) {
       ref={drag}
       className='matiere-day'
       style={{backgroundColor: matiere.color,
-              height: matiere.duration*(75)-5,
+              height: matiere.duration*(65)-5,
               display: isDragging ? "none":"flex"
             
     }}
@@ -29,7 +31,7 @@ function MatiereItem({ matiere }) {
     
       <button onClick={() => navigate('/update/'+matiere._id)
         } className='edit'>
-        edit
+        <img src={Edit} style={{width:"20px",height:"20px" }}/>
       </button>
     </div>
   )

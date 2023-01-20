@@ -31,7 +31,9 @@ return(
 <div className='matieres' 
           ref={drop}>
 
-    <button onClick={ ()=>navigate('/add')} className="btn-add">ADD</button>
+    <button onClick={ ()=>navigate('/add')} className="btn-add">
+      +
+    </button>
 
             {matieres.map((matiere) => {
               if(!days.includes(matiere.day))

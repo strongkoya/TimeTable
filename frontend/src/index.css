@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+ 
 }
 
 body {
@@ -29,6 +30,7 @@ ul {
 
 li {
   line-height: 2.2;
+ 
 }
 
 h1,
@@ -45,6 +47,12 @@ h3 {
   padding: 0 20px;
   text-align: center;
 }
+
+img{
+  background-color: rgba(0, 0, 255, 0);
+}
+
+
 
 .header {
   display: flex;
@@ -89,27 +97,6 @@ h3 {
   color: #828282;
 }
 
-.goals {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-
-.goal {
-  background-color: #f4f4f4;
-  margin: 10px 0;
-  padding: 20px 0 10px;
-  position: relative;
-}
-
-.goal .close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  cursor: pointer;
-  border: none;
-  background: none;
-}
 
 
 .matieres {
@@ -129,7 +116,6 @@ h3 {
   justify-content: space-between;
   align-items: center;
   
-
 }
 
 .matiere .close {
@@ -137,10 +123,11 @@ h3 {
   top: 1px;
   right: 1.5px;
   cursor: pointer;
-  border: none;
-  background: whitesmoke;
-  color:black;
-  font-weight: bolder;
+  background-color: transparent;
+  border:transparent;
+}
+.matiere .close:hover{
+  padding: 2.5px;
 }
 .matiere-day{
   margin: 5px;
@@ -158,10 +145,11 @@ h3 {
   top: 1px;
   right: 1.5px;
   cursor: pointer;
-  border: none;
-  background: whitesmoke;
-  color:black;
-  font-weight: bolder;
+  background-color: transparent;
+  border:transparent;
+}
+.matiere-day .edit:hover{
+  padding: 2.5px;
 }
 
 .form {
@@ -187,18 +175,43 @@ h3 {
   display:grid;
   grid-template-columns: repeat(6,1fr);
   column-gap: 1px;
-  border: 2px solid rgb(157, 73, 73);
+  border: 2px solid blue;
   border-radius: 10px;
+  padding: 10px;
+  height: 90vh;
 }
 .day{
   display: flex;
   flex-direction: column;
   background-color: whitesmoke;
-  height:90vh;
+  height:100%;
+  overflow-y: auto;
+  
+  
 }
 .day .title{
   background-color: #2ae2e5;
-  margin:3px 1px 10px;
+  margin:0px 1px ;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-add{
+  cursor: pointer;
+  background-color: #ddd; 
+  color: black;
+  font-size: 48px;
+  padding: 12px;
+  border:2px solid black;
+  border-radius: 10px;
+  margin: 4px 2px 0;
+}
+.btn-add:hover{
+  background-color:  black; 
+  color:  #ddd;
+  padding: 13px;
+  border:2px solid #123456;
 }
 
 .form-group {

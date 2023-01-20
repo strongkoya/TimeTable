@@ -1,5 +1,5 @@
 {
-  "name": "mern-tutorial",
+  "name": "timetable",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -10,7 +10,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\""
     
   },
-  "author": "Brad Traversy",
+  "author": "Khaled Jouablia @ Med koussay Toumi",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",

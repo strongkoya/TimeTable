@@ -50,13 +50,14 @@ const  Login=()=> {
     dispatch(login(userData))
   }
 
+
   return (
     <>
       <section className='heading'>
         <h1>
           <FaSignInAlt /> Login
         </h1>
-        <p>Login and start setting goals</p>
+        <p>Login and start organizing your time</p>
       </section>
 
       <section className='form'>
